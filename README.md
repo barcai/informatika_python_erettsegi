@@ -1,0 +1,1 @@
+# informatika_python_erettsegi
