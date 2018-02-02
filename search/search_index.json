@@ -1,0 +1,49 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Welcome to MkDocs"
+        },
+        {
+            "location": "/#welcome-to-mkdocs",
+            "text": "For full documentation visit  mkdocs.org .",
+            "title": "Welcome to MkDocs"
+        },
+        {
+            "location": "/#commands",
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
+            "title": "Commands"
+        },
+        {
+            "location": "/#project-layout",
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Project layout"
+        },
+        {
+            "location": "/about/",
+            "text": "Mihi quamvis\n\n\nIctibus Euboicam\n\n\nLorem markdownum nactus discedite audet quaerenti uni quae montisque structoque\nutque Hectoreis dantem, fatis orbe recto excussa capillos omnes. Includere\nPriamusque ex inponis ferrumque, sive lapidem, rigidis ad ambarum. Nec seges\ngurgite patrem falcis.\n\n\nFertur vidit serpentibus factum paterque adflixit; duruerant nuncupat, inter\ncessante quod, inde. Silet regna vellet, ibi agreste nigra \nspatium\nmedium\n. Nec una tamen omnia.\n\n\nPoscunt sparsitque a addiderim neque\n\n\nPater\n data creati exierint vulnere, vixque sed est forte tu et tecta \naut\n,\nin Iove plangit. Tibi illic non currendo hinc remis est tincto numquam profundo.\nLicet accipite dimotis quippe totoque, \nullo\n Minos\nsecuri, uti hinc, agitantem paene ab. Iusserat causa colloque colorem fingit\n\nsui vivacemque aevum\n discedite tollit et posset\nfugit, gradus.\n\n\npram = del;\nflashMemory.bash_server_aiff += multiImageFlowchart.dpi(simm_newbie + bar,\n        saas + hardSpam(prom, bar_so_artificial, vista), ctrUrl);\nif (trimMotherboardDisk) {\n    itunes_graphic_data.wavelength_xslt_encryption *= image;\n}\npublicPageZettabyte = phpWin;\nroom.desktopLock(coreRibbon.smsBitHorse(systemVerticalNetiquette));\n\n\n\nQuantum carent dextra attonitas cruor, Marsya \nlevis regem classe\n nullus? Sub\nterga \nter\n aequus aggere, tangit; ex dat pulcherrime spretor rigorem.\n\n\nMinimo enim\n\n\nCum adhuc insula gemitum Phoebeamque vanum tradidit, retemptat\n\niamque\n, stabat natisque imagine iste.\nObliquis stirpe accinctus procul sic, tu ecce ventos litora, rebus loqui ignava\nsolus fratres! Amore illo spretae; ecce gravitate inplent \nsumimus Pleuronius\n\nramisque servat nocte cum animalia \nfama\n errare\nvirgineo? Fumantia morbo alma custos manere \nPenthea\n. Utiliter arma ratibus\nstudiosius ipsa intercipit reliquit admonitorque genuit novissima voluptas\nflexit Circe.\n\n\nCoronant dabitur non videt quo, cadis Phocus; in vidi magna, in vanis lapsum\ndumque nocti. Peteretur parentem fer est Thisbe adire sole suo. Alumno adiutis\nsubiectatque pedibus et est aratri manus virisque ab membris fulvo \nlatus\n.\nEadem ne mortale parcite caelo relinquitur videt, ardetque, qui non.\n\n\n\n\nAtlantide quercus\n\n\nComitavit fixurus\n\n\nSuprema sola tamen tellure\n\n\n\n\nQuattuor fuit aperire! Tum perque ferire loquuntur nescio. Acta divis ait et, et\nquantum dieque tamen, infans, haberet frequens non gyrum contentis Persephone\nminus!",
+            "title": "Mihi quamvis"
+        },
+        {
+            "location": "/about/#mihi-quamvis",
+            "text": "",
+            "title": "Mihi quamvis"
+        },
+        {
+            "location": "/about/#ictibus-euboicam",
+            "text": "Lorem markdownum nactus discedite audet quaerenti uni quae montisque structoque\nutque Hectoreis dantem, fatis orbe recto excussa capillos omnes. Includere\nPriamusque ex inponis ferrumque, sive lapidem, rigidis ad ambarum. Nec seges\ngurgite patrem falcis.  Fertur vidit serpentibus factum paterque adflixit; duruerant nuncupat, inter\ncessante quod, inde. Silet regna vellet, ibi agreste nigra  spatium\nmedium . Nec una tamen omnia.",
+            "title": "Ictibus Euboicam"
+        },
+        {
+            "location": "/about/#poscunt-sparsitque-a-addiderim-neque",
+            "text": "Pater  data creati exierint vulnere, vixque sed est forte tu et tecta  aut ,\nin Iove plangit. Tibi illic non currendo hinc remis est tincto numquam profundo.\nLicet accipite dimotis quippe totoque,  ullo  Minos\nsecuri, uti hinc, agitantem paene ab. Iusserat causa colloque colorem fingit sui vivacemque aevum  discedite tollit et posset\nfugit, gradus.  pram = del;\nflashMemory.bash_server_aiff += multiImageFlowchart.dpi(simm_newbie + bar,\n        saas + hardSpam(prom, bar_so_artificial, vista), ctrUrl);\nif (trimMotherboardDisk) {\n    itunes_graphic_data.wavelength_xslt_encryption *= image;\n}\npublicPageZettabyte = phpWin;\nroom.desktopLock(coreRibbon.smsBitHorse(systemVerticalNetiquette));  Quantum carent dextra attonitas cruor, Marsya  levis regem classe  nullus? Sub\nterga  ter  aequus aggere, tangit; ex dat pulcherrime spretor rigorem.",
+            "title": "Poscunt sparsitque a addiderim neque"
+        },
+        {
+            "location": "/about/#minimo-enim",
+            "text": "Cum adhuc insula gemitum Phoebeamque vanum tradidit, retemptat iamque , stabat natisque imagine iste.\nObliquis stirpe accinctus procul sic, tu ecce ventos litora, rebus loqui ignava\nsolus fratres! Amore illo spretae; ecce gravitate inplent  sumimus Pleuronius \nramisque servat nocte cum animalia  fama  errare\nvirgineo? Fumantia morbo alma custos manere  Penthea . Utiliter arma ratibus\nstudiosius ipsa intercipit reliquit admonitorque genuit novissima voluptas\nflexit Circe.  Coronant dabitur non videt quo, cadis Phocus; in vidi magna, in vanis lapsum\ndumque nocti. Peteretur parentem fer est Thisbe adire sole suo. Alumno adiutis\nsubiectatque pedibus et est aratri manus virisque ab membris fulvo  latus .\nEadem ne mortale parcite caelo relinquitur videt, ardetque, qui non.   Atlantide quercus  Comitavit fixurus  Suprema sola tamen tellure   Quattuor fuit aperire! Tum perque ferire loquuntur nescio. Acta divis ait et, et\nquantum dieque tamen, infans, haberet frequens non gyrum contentis Persephone\nminus!",
+            "title": "Minimo enim"
+        }
+    ]
+}
