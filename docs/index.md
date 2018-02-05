@@ -1,17 +1,31 @@
-# Welcome to MkDocs
+# Indulás
 
-For full documentation visit [mkdocs.org](http://mkdocs.org).
+## Az egér és a billentyűzet
 
-## Commands
+Meglepő, hogy mennyire érdekes és izgalmas problémák léteznek az informatika világában és mégis mennyire kevesen vagyunk akik ezzel foglalkozunk. Ennek sok oka lehet, az egyike ezeknek talán az, hogy középiskolában nem szerettetik meg az emberrel eléggé ezt a területet. Bár hogy is szerettethetnék meg, ha a tanároknak nem ezekkel a problémákkal kell elképesztenie a diákokat, hanem olyan érdekfeszítő és elbűvölő témákkal, mint mi is az az egér és billentyűzet.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+## Az oldalról
 
-## Project layout
+Ezen az oldalon nem megváltani szeretném a világot, nem kioktatni azokat akik engem is oktattak. Inkább véleményem megosztani és mindenek előtt
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+...
+
+...
+
+...
+
+...
+
+... dobpergés ...
+
+...
+
+...
+
+...
+
+...
+
+ **Python**-ban programozni.
+ 
+ Itt leginkább útmutatókat találsz ahhoz, hogy hogyan oldd meg az emelt informatika érettségi programozás problémáit a Python nyelv segítségével és (amennyiben lesz idő rá) egy közösséget arra, hogy fejlesszük önmagunkat és segítsünk másoknak is fejlődni az informatika területén.
