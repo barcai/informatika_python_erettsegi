@@ -3,6 +3,9 @@ theme:
   name: 'material'
   feature:
     tabs: true
+markdown_extensions:
+  - admonition
+  - codehilite
 extra:
   search:
     language: 'hu'

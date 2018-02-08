@@ -1,7 +1,7 @@
 
 
 megoldas = []
-adat = {}
+versenyzok = {}
 
 def pontszam(helyes_megoldas, versenyzo_megoldas):
     jo_megoldasok = map(lambda x: True if x[0] == x[1] else False, zip(helyes_megoldas, versenyzo_megoldas))
@@ -10,7 +10,7 @@ def pontszam(helyes_megoldas, versenyzo_megoldas):
 
 # Adatstruktura
 # versenyzok = {
-#   versenyzoazonosito: [megoldas, pontszam]
+#   versenyzoazonosito: megoldas
 # }
 
 # 1. feladat
@@ -19,7 +19,7 @@ with open("valaszok.txt") as f:
     megoldas = list(f.readline().strip())
     for sor in f:
         sor = sor.strip().split()
-        adat[sor[0]] = list(sor[1])
+        versenyzok[sor[0]] = list(sor[1])
 
 # from pprint import pprint
 # pprint(adat)
@@ -51,6 +51,6 @@ print("6. feladat: A versenyzők pontszámának meghatározása")
 pontozas = [3 if num < 6 else (4 if num < 11 else 5) for num in range(1, 14) ] + [6]
 print(sum(pontozas))
 with open("pontok.txt", "w") as f:
-    for azonosito, valaszok in adat.items():
+    for azonosito, valaszok in versenyzok.items():
         osszpont = sum(map(lambda y: y[0] * y[1], zip(pontozas, map(lambda x: 1 if x[0] == x[1] else 0, zip(megoldas, valaszok)))))
         f.write("{} {}\n".format(azonosito, osszpont))
