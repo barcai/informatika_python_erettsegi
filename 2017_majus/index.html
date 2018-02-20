@@ -663,10 +663,10 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
 </blockquote>
 <p>Következő feladatunk egy egészen egyszerű statisztikai kérdés lesz. Ha szeretnénk, megírhatjuk ezt a feladatot a következő sorokban is, de én egy gyors függvény felvázolása mellett döntöttem, hiszen arra példát még nem is láttunk. Ugyebár a függvényünkben gyakorlatilag egyetlen lokális változóra lesz szükségünk, ami a helyes válaszok mennyiségét tartja majd nekünk számon, hiszen a paraméterként megkapott versenyzők megadják az összes versenyzőnek a számát. Nézzük is meg hogy is írjuk meg a függvényünk:     íííííí</p>
 <div class="codehilite"><pre><span></span><span class="c1"># Függvény az 5. feladathoz</span>
-<span class="k">def</span> <span class="p">(</span><span class="n">feladat_szama</span><span class="p">,</span> <span class="n">megoldas</span><span class="p">,</span> <span class="n">versenyzok</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">helyes_valaszok_osszesen</span><span class="p">(</span><span class="n">feladat_szama</span><span class="p">,</span> <span class="n">megoldas</span><span class="p">,</span> <span class="n">versenyzok</span><span class="p">):</span>
     <span class="n">helyes_valaszok_szama</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">for</span> <span class="n">azonosito</span><span class="p">,</span> <span class="n">valaszok</span> <span class="ow">in</span> <span class="n">adat</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">azonosito</span><span class="p">,</span> <span class="n">valaszok</span> <span class="ow">in</span> <span class="n">versenyzok</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">megoldas</span><span class="p">[</span><span class="n">feladat_szama</span><span class="p">]</span> <span class="o">==</span> <span class="n">valaszok</span><span class="p">[</span><span class="n">feladat_szama</span><span class="p">]:</span>
             <span class="n">helyes_valaszok_szama</span> <span class="o">+=</span> <span class="mi">1</span>
 
@@ -676,17 +676,22 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
 
 <p>A program következő sorában pedig meg is hívjuk a függvényt:</p>
 <div class="codehilite"><pre><span></span><span class="n">feladat_szama</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;5. feladat: A feladat sorszáma = &quot;</span><span class="p">))</span>
+<span class="n">helyes_valaszok_szama</span> <span class="o">=</span> <span class="n">helyes_valaszok_osszesen</span><span class="p">(</span><span class="n">feladat_szama</span><span class="p">,</span> <span class="n">megoldas</span><span class="p">,</span> <span class="n">versenyzok</span><span class="p">)</span>
 </pre></div>
 
 
 <p>A két tizedesjeggyel való kiíráshoz pedig két féle módon ugorhatunk neki. Az egyik megoldás a string adattípussal érkező format függvény. Ő millió és egy dolgot tud neked csinálni, érdemes utánanézni. Én amikor érettségiztem, lusta voltam ezzek közül kikeresni, de kétség kívül a format-tal lehetne szépen és elegánsan megoldani. A másik propozált variáció ami hirtelen még a fejembe ötlött az a beépített round függvény, ami adott mennyiségű tizedesjegyre kerekíti a számod, ha megadsz a hívásakor egy második paramétert. Nézzük is meg mind a kettőt:</p>
 <div class="codehilite"><pre><span></span><span class="c1"># Format beépített lehetőségeivel kreált megoldás</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;A feladatra {} fő, a versenyzők {:.2f}%-a adott helyes választ.&quot;</span><span class="o">.</span>
-      <span class="n">format</span><span class="p">(</span><span class="n">helyes_valaszok</span><span class="p">,</span> <span class="p">(</span><span class="n">helyes_valaszok</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">adat</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span> <span class="p">))</span>
+      <span class="n">format</span><span class="p">(</span><span class="n">helyes_valaszok_szama</span><span class="p">,</span>
+             <span class="p">(</span><span class="n">helyes_valaszok_szama</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">adat</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span>
+            <span class="p">))</span>
 
 <span class="c1"># round függvénnyel létrehozott megoldás</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;A feladatra {} fő, a versenyzők {}%-a adott helyes választ.&quot;</span><span class="o">.</span>
-      <span class="n">format</span><span class="p">(</span><span class="n">helyes_valaszok</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="n">helyes_valaszok</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">adat</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span> <span class="p">))</span>
+      <span class="n">format</span><span class="p">(</span><span class="n">helyes_valaszok_szama</span><span class="p">,</span> 
+             <span class="nb">round</span><span class="p">((</span><span class="n">helyes_valaszok_szama</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">adat</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="p">))</span>
 </pre></div>
 
 
