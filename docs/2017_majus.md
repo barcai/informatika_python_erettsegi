@@ -169,10 +169,10 @@ Következő feladatunk egy egészen egyszerű statisztikai kérdés lesz. Ha sze
 
 ```python
 # Függvény az 5. feladathoz
-def (feladat_szama, megoldas, versenyzok):
+def helyes_valaszok_osszesen(feladat_szama, megoldas, versenyzok):
     helyes_valaszok_szama = 0
 
-    for azonosito, valaszok in adat.items():
+    for azonosito, valaszok in versenyzok.items():
         if megoldas[feladat_szama] == valaszok[feladat_szama]:
             helyes_valaszok_szama += 1
 
@@ -185,6 +185,7 @@ A program következő sorában pedig meg is hívjuk a függvényt:
 
 ```python
 feladat_szama = int(input("5. feladat: A feladat sorszáma = "))
+helyes_valaszok_szama = helyes_valaszok_osszesen(feladat_szama, megoldas, versenyzok)
 ```
 
 A két tizedesjeggyel való kiíráshoz pedig két féle módon ugorhatunk neki. Az egyik megoldás a string adattípussal érkező format függvény. Ő millió és egy dolgot tud neked csinálni, érdemes utánanézni. Én amikor érettségiztem, lusta voltam ezzek közül kikeresni, de kétség kívül a format-tal lehetne szépen és elegánsan megoldani. A másik propozált variáció ami hirtelen még a fejembe ötlött az a beépített round függvény, ami adott mennyiségű tizedesjegyre kerekíti a számod, ha megadsz a hívásakor egy második paramétert. Nézzük is meg mind a kettőt:
@@ -192,11 +193,15 @@ A két tizedesjeggyel való kiíráshoz pedig két féle módon ugorhatunk neki.
 ```python
 # Format beépített lehetőségeivel kreált megoldás
 print("A feladatra {} fő, a versenyzők {:.2f}%-a adott helyes választ.".
-      format(helyes_valaszok, (helyes_valaszok/len(adat))*100 ))
+      format(helyes_valaszok_szama,
+             (helyes_valaszok_szama/len(adat))*100
+            ))
 
 # round függvénnyel létrehozott megoldás
 print("A feladatra {} fő, a versenyzők {}%-a adott helyes választ.".
-      format(helyes_valaszok, round((helyes_valaszok/len(adat))*100) ))
+      format(helyes_valaszok_szama, 
+             round((helyes_valaszok_szama/len(adat))*100)
+            ))
 ```
 
 ## 6. feladat
