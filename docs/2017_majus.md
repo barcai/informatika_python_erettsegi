@@ -23,7 +23,7 @@ versenyzok = {}
 # versenyzok = {
 #   versenyzoazonosito: megoldas
 # }
-# Példa: 
+# Példa:
 versenyzok = {
     'AB123': 'BXCDBBACACADBC',
     'AH97': 'BCACDBDDBCBBCA',
@@ -85,6 +85,10 @@ print("2. feladat: A vetélkedőn {} versenyző indult.".format(len(versenyzok))
 
 > Kérje be egy versenyző azonosítóját, és jelenítse meg a mintának megfelelően a hozzá eltárolt válaszokat! Feltételezheti, hogy a fájlban létező azonosítót adnak meg.
 
+Annak köszönhetően, hogy az adatstruktúránknak a dictionary adattípust választottuk, a megoldásunk erre a feladatra meglehetősen könnyű lesz. Mivel minden megoldást egy versenyző azonosítóval asszociálunk így csak a felhasználótól bekért adatot egy az egybe átadhatjuk az asszociatív tömbünknek és ő hatalmas örömünkre ki is köpi a megoldást.
+
+Lássuk ezt hogyan is csináljuk:
+
 ```python
 # 3. feladat
 bekert_azonosito = input("3. feladat: A versenyző azonosítója = ")
@@ -93,20 +97,120 @@ print('{}   (a versenyző válasza)'.format("".join(bekert_megoldas)))
 ```
 
 ## 4. feladat
+
 > Írassa ki a képernyőre a helyes megoldást! A helyes megoldás alatti sorba „+” jelet tegyen, ha az adott feladatot az előző feladatban kiválasztott versenyző eltalálta, egyébként egy szóközt! A kiírást a mintának megfelelő módon alakítsa ki!
+
+Nos, ez a feladat kicsit elgondolkodtatóbb, én csináltam is rá egy kér soros megoldást, de ez kicsit magasabb szintű és nem szükséges ahhoz, hogy meg tudd oldani a feladatot, de amennyiben érdekel, megosztom az oldal alján ezt is.
+
+A feladatot leglogikusabban úgy lehet megközelíteni, ha átmegyünk rajta soronként. A problémánk paramétereiként megkapjuk az aranyifjúnk megoldását, illetőleg a megoldókulcsot és ki kéne magából köpni két egymást követő sorra a megoldást és hogy miket találtunk el. Ezek közül az első egyszerű, hiszen a megoldást külön változóba beolvastuk a feladatlap 0.feladataként. A másodikra megoldásként pedig tudunk adni egy Pythonikus és egy kevésbe Pythonikus megoldást. A második az, ahogyan a legtöbb nyelvben megoldanád, az első pedig, mint Python fejlesztő, az én plusz pontjaimmal örvendeztetne a helyes megoldáson kívül.
+
+**Lássuk is őket:**
+
+Pythonikus:
 
 ```python
 print("4. feladat:")
-print('{}   (a helyes megoldás)'.format("".join(megoldas)))
-jo_megoldások = list(map(lambda betu: True if betu[0] == betu[1] else False, zip(megoldas, versenyzo_megoldas)))
-print("{}   (a versenyző helyes válaszai)".format("".join(map(lambda x: "+" if x else "", jo_megoldások)))
+# Kiírjuk a helyes megoldást
+print('{}   (a helyes megoldás)'.format(megoldas))
+
+# Ez lehetne lista is amit a végén összefűzünk, de legyen most string típusú
+helyesseg = ""
+for jo_betu, versenyzo_betu in zip(megoldas, bekert_megoldas):
+    if jo_betu == versenyzo_betu:
+        helyesseg += "+"
+    else:
+        helyesseg += " "
+
+print("{}   (a versenyző helyes válaszai)".format(helyesseg)
 ```
 
+Gyors info a Pythonikus megoldásról. Ugye itt mi a zip beépített függvényt használtuk. Ez azt fogja nekünk csinálni, hogy a két (vagy több) szekvenciánkból egy listát fog összerakni, amiben az egyes elemek két (vagy amennyiben több szekvenciát adtunk meg bemeneti paraméterként, több) elemű listáká alakulnak (tuple-ek lesznek, de ez most nem számít) amiket ilyen nagyon szépen a for ciklusunkban két változóba tudunk bepakolni. Ez a Python nyelv egyik nagyon szép megoldása, ami ebben a feladatban nagyon sokat nem fog változtatni, de nagyobb szoftverekben sokat segíthet a kód megértésében és tisztán tartásában.
+
+Illetve lássuk a kevésbé Pythonikusat:
+
+```python
+print("4. feladat:")
+# Kiírjuk a helyes megoldást
+print('{}   (a helyes megoldás)'.format(megoldas))
+
+# Ez lehetne lista is amit a végén összefűzünk, de legyen most string típusú
+helyesseg = ""
+for index in range(megoldas):
+    if megoldas[index] == bekert_megoldas[index]:
+        helyesseg += "+"
+    else:
+        helyesseg += " "
+
+print("{}   (a versenyző helyes válaszai)".format(helyesseg)
+```
+
+Természetesen ezzel a megoldással sincs semmi gond. Itt egyszerűen átmegyünk a két string indexein és azokat hasonlítjuk össze.
+
+Mind a két megoldás pontosan ugyan azzal az eredménnyel fog végződni, ami a jó megoldás.
+
+*u.i.:* 3 soros megoldás *(magyarázat erre az összegzés után)*:
+
+```python
+print("4. feladat:")
+print('{}   (a helyes megoldás)'.format(megoldas))
+print("{}   (a versenyző helyes válaszai)".
+      format("".
+      join(map(lambda x: "+" if  x[0]==x[1] else " ",
+           zip(megoldas, bekert_megoldas))))
+```
+
+*u.u.i.:* Technikailag 5 soros, de csak a jobban olvashatóság kedvéért.
+
 ## 5. feladat
+
 > Kérje be egy feladat sorszámát, majd határozza meg, hogy hány versenyző adott a feladatra helyes megoldást, és ez a versenyzők hány százaléka! A százalékos eredményt a mintának megfelelően, két tizedesjeggyel írassa ki!
 
+Következő feladatunk egy egészen egyszerű statisztikai kérdés lesz. Ha szeretnénk, megírhatjuk ezt a feladatot a következő sorokban is, de én egy gyors függvény felvázolása mellett döntöttem, hiszen arra példát még nem is láttunk. Ugyebár a függvényünkben gyakorlatilag egyetlen lokális változóra lesz szükségünk, ami a helyes válaszok mennyiségét tartja majd nekünk számon, hiszen a paraméterként megkapott versenyzők megadják az összes versenyzőnek a számát. Nézzük is meg hogy is írjuk meg a függvényünk:     íííííí
+
+```python
+# Függvény az 5. feladathoz
+def (feladat_szama, megoldas, versenyzok):
+    helyes_valaszok_szama = 0
+
+    for azonosito, valaszok in adat.items():
+        if megoldas[feladat_szama] == valaszok[feladat_szama]:
+            helyes_valaszok_szama += 1
+
+    return helyes_valaszok_szama
+
+
+```
+
+A program következő sorában pedig meg is hívjuk a függvényt:
+
+```python
+feladat_szama = int(input("5. feladat: A feladat sorszáma = "))
+```
+
+A két tizedesjeggyel való kiíráshoz pedig két féle módon ugorhatunk neki. Az egyik megoldás a string adattípussal érkező format függvény. Ő millió és egy dolgot tud neked csinálni, érdemes utánanézni. Én amikor érettségiztem, lusta voltam ezzek közül kikeresni, de kétség kívül a format-tal lehetne szépen és elegánsan megoldani. A másik propozált variáció ami hirtelen még a fejembe ötlött az a beépített round függvény, ami adott mennyiségű tizedesjegyre kerekíti a számod, ha megadsz a hívásakor egy második paramétert. Nézzük is meg mind a kettőt:
+
+```python
+# Format beépített lehetőségeivel kreált megoldás
+print("A feladatra {} fő, a versenyzők {:.2f}%-a adott helyes választ.".
+      format(helyes_valaszok, (helyes_valaszok/len(adat))*100 ))
+
+# round függvénnyel létrehozott megoldás
+print("A feladatra {} fő, a versenyzők {}%-a adott helyes választ.".
+      format(helyes_valaszok, round((helyes_valaszok/len(adat))*100) ))
+```
+
 ## 6. feladat
+
 > A verseny feladatai nem egyenlő nehézségűek: az 1-5. feladat 3 pontot, a 6-10. feladat 4 pontot, a 11-13. feladat 5 pontot, míg a 14. feladat 6 pontot ér. Határozza meg az egyes versenyzők pontszámát, és a listát írassa ki a pontok.txt nevű állományba! Az állomány minden sora egy versenyző kódját, majd szóközzel elválasztva az általa elért pontszámot tartalmazza!
 
+```python
+
+```
+
 ## 7. feladat
+
 > A versenyen a három legmagasabb pontszámot elérő összes versenyzőt díjazzák. Például 5 indulónál előfordulhat, hogy 3 első és 2 második díjat adnak ki. Így megtörténhet az is, hogy nem kerül sor mindegyik díj kiadására. Írassa ki a mintának megfelelően a képernyőre a díjazottak kódját és pontszámát pontszám szerint csökkenő sorrendben!
+
+```python
+
+```
