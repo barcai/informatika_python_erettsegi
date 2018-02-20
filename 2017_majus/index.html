@@ -538,7 +538,7 @@ videóiban. Lássuk a dictionary-s megoldás hogy is néz ki:</p>
 <span class="c1"># versenyzok = {</span>
 <span class="c1">#   versenyzoazonosito: megoldas</span>
 <span class="c1"># }</span>
-<span class="c1"># Példa: </span>
+<span class="c1"># Példa:</span>
 <span class="n">versenyzok</span> <span class="o">=</span> <span class="p">{</span>
 <span class="hll">    <span class="s1">&#39;AB123&#39;</span><span class="p">:</span> <span class="s1">&#39;BXCDBBACACADBC&#39;</span><span class="p">,</span>
 </span><span class="hll">    <span class="s1">&#39;AH97&#39;</span><span class="p">:</span> <span class="s1">&#39;BCACDBDDBCBBCA&#39;</span><span class="p">,</span>
@@ -593,6 +593,8 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
 <blockquote>
 <p>Kérje be egy versenyző azonosítóját, és jelenítse meg a mintának megfelelően a hozzá eltárolt válaszokat! Feltételezheti, hogy a fájlban létező azonosítót adnak meg.</p>
 </blockquote>
+<p>Annak köszönhetően, hogy az adatstruktúránknak a dictionary adattípust választottuk, a megoldásunk erre a feladatra meglehetősen könnyű lesz. Mivel minden megoldást egy versenyző azonosítóval asszociálunk így csak a felhasználótól bekért adatot egy az egybe átadhatjuk az asszociatív tömbünknek és ő hatalmas örömünkre ki is köpi a megoldást.</p>
+<p>Lássuk ezt hogyan is csináljuk:</p>
 <div class="codehilite"><pre><span></span><span class="c1"># 3. feladat</span>
 <span class="n">bekert_azonosito</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;3. feladat: A versenyző azonosítója = &quot;</span><span class="p">)</span>
 <span class="n">bekert_megoldas</span> <span class="o">=</span> <span class="n">versenyzok</span><span class="p">[</span><span class="n">bekert_azonosito</span><span class="p">]</span>
@@ -604,25 +606,104 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
 <blockquote>
 <p>Írassa ki a képernyőre a helyes megoldást! A helyes megoldás alatti sorba „+” jelet tegyen, ha az adott feladatot az előző feladatban kiválasztott versenyző eltalálta, egyébként egy szóközt! A kiírást a mintának megfelelő módon alakítsa ki!</p>
 </blockquote>
+<p>Nos, ez a feladat kicsit elgondolkodtatóbb, én csináltam is rá egy kér soros megoldást, de ez kicsit magasabb szintű és nem szükséges ahhoz, hogy meg tudd oldani a feladatot, de amennyiben érdekel, megosztom az oldal alján ezt is.</p>
+<p>A feladatot leglogikusabban úgy lehet megközelíteni, ha átmegyünk rajta soronként. A problémánk paramétereiként megkapjuk az aranyifjúnk megoldását, illetőleg a megoldókulcsot és ki kéne magából köpni két egymást követő sorra a megoldást és hogy miket találtunk el. Ezek közül az első egyszerű, hiszen a megoldást külön változóba beolvastuk a feladatlap 0.feladataként. A másodikra megoldásként pedig tudunk adni egy Pythonikus és egy kevésbe Pythonikus megoldást. A második az, ahogyan a legtöbb nyelvben megoldanád, az első pedig, mint Python fejlesztő, az én plusz pontjaimmal örvendeztetne a helyes megoldáson kívül.</p>
+<p><strong>Lássuk is őket:</strong></p>
+<p>Pythonikus:</p>
 <div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;4. feladat:&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;{}   (a helyes megoldás)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">megoldas</span><span class="p">)))</span>
-<span class="n">jo_megoldások</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">betu</span><span class="p">:</span> <span class="bp">True</span> <span class="k">if</span> <span class="n">betu</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">betu</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="bp">False</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="n">megoldas</span><span class="p">,</span> <span class="n">versenyzo_megoldas</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;{}   (a versenyző helyes válaszai)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;+&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">jo_megoldások</span><span class="p">)))</span>
+<span class="c1"># Kiírjuk a helyes megoldást</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;{}   (a helyes megoldás)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">megoldas</span><span class="p">))</span>
+
+<span class="c1"># Ez lehetne lista is amit a végén összefűzünk, de legyen most string típusú</span>
+<span class="n">helyesseg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">jo_betu</span><span class="p">,</span> <span class="n">versenyzo_betu</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">megoldas</span><span class="p">,</span> <span class="n">bekert_megoldas</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">jo_betu</span> <span class="o">==</span> <span class="n">versenyzo_betu</span><span class="p">:</span>
+        <span class="n">helyesseg</span> <span class="o">+=</span> <span class="s2">&quot;+&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">helyesseg</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;{}   (a versenyző helyes válaszai)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">helyesseg</span><span class="p">)</span>
 </pre></div>
 
 
+<p>Gyors info a Pythonikus megoldásról. Ugye itt mi a zip beépített függvényt használtuk. Ez azt fogja nekünk csinálni, hogy a két (vagy több) szekvenciánkból egy listát fog összerakni, amiben az egyes elemek két (vagy amennyiben több szekvenciát adtunk meg bemeneti paraméterként, több) elemű listáká alakulnak (tuple-ek lesznek, de ez most nem számít) amiket ilyen nagyon szépen a for ciklusunkban két változóba tudunk bepakolni. Ez a Python nyelv egyik nagyon szép megoldása, ami ebben a feladatban nagyon sokat nem fog változtatni, de nagyobb szoftverekben sokat segíthet a kód megértésében és tisztán tartásában.</p>
+<p>Illetve lássuk a kevésbé Pythonikusat:</p>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;4. feladat:&quot;</span><span class="p">)</span>
+<span class="c1"># Kiírjuk a helyes megoldást</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;{}   (a helyes megoldás)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">megoldas</span><span class="p">))</span>
+
+<span class="c1"># Ez lehetne lista is amit a végén összefűzünk, de legyen most string típusú</span>
+<span class="n">helyesseg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">megoldas</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">megoldas</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">bekert_megoldas</span><span class="p">[</span><span class="n">index</span><span class="p">]:</span>
+        <span class="n">helyesseg</span> <span class="o">+=</span> <span class="s2">&quot;+&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">helyesseg</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;{}   (a versenyző helyes válaszai)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">helyesseg</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Természetesen ezzel a megoldással sincs semmi gond. Itt egyszerűen átmegyünk a két string indexein és azokat hasonlítjuk össze.</p>
+<p>Mind a két megoldás pontosan ugyan azzal az eredménnyel fog végződni, ami a jó megoldás.</p>
+<p><em>u.i.:</em> 3 soros megoldás <em>(magyarázat erre az összegzés után)</em>:</p>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;4. feladat:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;{}   (a helyes megoldás)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">megoldas</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;{}   (a versenyző helyes válaszai)&quot;</span><span class="o">.</span>
+      <span class="n">format</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span>
+      <span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;+&quot;</span> <span class="k">if</span>  <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot; &quot;</span><span class="p">,</span>
+           <span class="nb">zip</span><span class="p">(</span><span class="n">megoldas</span><span class="p">,</span> <span class="n">bekert_megoldas</span><span class="p">))))</span>
+</pre></div>
+
+
+<p><em>u.u.i.:</em> Technikailag 5 soros, de csak a jobban olvashatóság kedvéért.</p>
 <h2 id="5-feladat">5. feladat</h2>
 <blockquote>
 <p>Kérje be egy feladat sorszámát, majd határozza meg, hogy hány versenyző adott a feladatra helyes megoldást, és ez a versenyzők hány százaléka! A százalékos eredményt a mintának megfelelően, két tizedesjeggyel írassa ki!</p>
 </blockquote>
+<p>Következő feladatunk egy egészen egyszerű statisztikai kérdés lesz. Ha szeretnénk, megírhatjuk ezt a feladatot a következő sorokban is, de én egy gyors függvény felvázolása mellett döntöttem, hiszen arra példát még nem is láttunk. Ugyebár a függvényünkben gyakorlatilag egyetlen lokális változóra lesz szükségünk, ami a helyes válaszok mennyiségét tartja majd nekünk számon, hiszen a paraméterként megkapott versenyzők megadják az összes versenyzőnek a számát. Nézzük is meg hogy is írjuk meg a függvényünk:     íííííí</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Függvény az 5. feladathoz</span>
+<span class="k">def</span> <span class="p">(</span><span class="n">feladat_szama</span><span class="p">,</span> <span class="n">megoldas</span><span class="p">,</span> <span class="n">versenyzok</span><span class="p">):</span>
+    <span class="n">helyes_valaszok_szama</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">azonosito</span><span class="p">,</span> <span class="n">valaszok</span> <span class="ow">in</span> <span class="n">adat</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">megoldas</span><span class="p">[</span><span class="n">feladat_szama</span><span class="p">]</span> <span class="o">==</span> <span class="n">valaszok</span><span class="p">[</span><span class="n">feladat_szama</span><span class="p">]:</span>
+            <span class="n">helyes_valaszok_szama</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">helyes_valaszok_szama</span>
+</pre></div>
+
+
+<p>A program következő sorában pedig meg is hívjuk a függvényt:</p>
+<div class="codehilite"><pre><span></span><span class="n">feladat_szama</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;5. feladat: A feladat sorszáma = &quot;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>A két tizedesjeggyel való kiíráshoz pedig két féle módon ugorhatunk neki. Az egyik megoldás a string adattípussal érkező format függvény. Ő millió és egy dolgot tud neked csinálni, érdemes utánanézni. Én amikor érettségiztem, lusta voltam ezzek közül kikeresni, de kétség kívül a format-tal lehetne szépen és elegánsan megoldani. A másik propozált variáció ami hirtelen még a fejembe ötlött az a beépített round függvény, ami adott mennyiségű tizedesjegyre kerekíti a számod, ha megadsz a hívásakor egy második paramétert. Nézzük is meg mind a kettőt:</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Format beépített lehetőségeivel kreált megoldás</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A feladatra {} fő, a versenyzők {:.2f}%-a adott helyes választ.&quot;</span><span class="o">.</span>
+      <span class="n">format</span><span class="p">(</span><span class="n">helyes_valaszok</span><span class="p">,</span> <span class="p">(</span><span class="n">helyes_valaszok</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">adat</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span> <span class="p">))</span>
+
+<span class="c1"># round függvénnyel létrehozott megoldás</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A feladatra {} fő, a versenyzők {}%-a adott helyes választ.&quot;</span><span class="o">.</span>
+      <span class="n">format</span><span class="p">(</span><span class="n">helyes_valaszok</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="n">helyes_valaszok</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">adat</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span> <span class="p">))</span>
+</pre></div>
+
+
 <h2 id="6-feladat">6. feladat</h2>
 <blockquote>
 <p>A verseny feladatai nem egyenlő nehézségűek: az 1-5. feladat 3 pontot, a 6-10. feladat 4 pontot, a 11-13. feladat 5 pontot, míg a 14. feladat 6 pontot ér. Határozza meg az egyes versenyzők pontszámát, és a listát írassa ki a pontok.txt nevű állományba! Az állomány minden sora egy versenyző kódját, majd szóközzel elválasztva az általa elért pontszámot tartalmazza!</p>
 </blockquote>
+<div class="codehilite"><pre><span></span>
+</pre></div>
+
+
 <h2 id="7-feladat">7. feladat</h2>
 <blockquote>
 <p>A versenyen a három legmagasabb pontszámot elérő összes versenyzőt díjazzák. Például 5 indulónál előfordulhat, hogy 3 első és 2 második díjat adnak ki. Így megtörténhet az is, hogy nem kerül sor mindegyik díj kiadására. Írassa ki a mintának megfelelően a képernyőre a díjazottak kódját és pontszámát pontszám szerint csökkenő sorrendben!</p>
 </blockquote>
+<div class="codehilite"><pre><span></span>
+</pre></div>
                 
                   
                 
@@ -725,6 +806,8 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
       
     
     
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-114478508-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>
