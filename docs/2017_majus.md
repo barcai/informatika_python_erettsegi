@@ -16,7 +16,6 @@ Ugyan véleményem szerint a probléma nem kíván egy nagyon komplex adatstrukt
 [PythonIdomár](https://pythonidomar.wordpress.com/2018/01/23/tesztverseny-a-2017-majusi-emelt-szintu-informatika-erettsegi-programozas-feladatanak-megoldasa/)
 videóiban. Lássuk a dictionary-s megoldás hogy is néz ki:
 
-
 ```python hl_lines="8 9 11"
 versenyzok = {}
 # Adatstruktura
@@ -32,7 +31,6 @@ versenyzok = {
 }
 
 ```
-
 
 !!! hint "Dokumentáció"
     Bármelyik adattípus mellett döntesz, a Python Interacive Shell-jében tudsz segítséget kapni ha elakadsz. Egyszerűen indítsd el az interpreter-t és írd be, hogy help(). Ezután a kurzorod a megszokott >>>  helyett help>-re vált és innen beírva a "topics" parancsot, a shell ki fogja adni a nyelvel kapcsolatos elérhető témákat, amelyek közül bármelyiket kiválaszthatod. Amennyiben a dictionary-kra vagy kíváncsi, írd be, hogy "DICTIONARIES".
@@ -165,7 +163,7 @@ print("{}   (a versenyző helyes válaszai)".
 
 > Kérje be egy feladat sorszámát, majd határozza meg, hogy hány versenyző adott a feladatra helyes megoldást, és ez a versenyzők hány százaléka! A százalékos eredményt a mintának megfelelően, két tizedesjeggyel írassa ki!
 
-Következő feladatunk egy egészen egyszerű statisztikai kérdés lesz. Ha szeretnénk, megírhatjuk ezt a feladatot a következő sorokban is, de én egy gyors függvény felvázolása mellett döntöttem, hiszen arra példát még nem is láttunk. Ugyebár a függvényünkben gyakorlatilag egyetlen lokális változóra lesz szükségünk, ami a helyes válaszok mennyiségét tartja majd nekünk számon, hiszen a paraméterként megkapott versenyzők megadják az összes versenyzőnek a számát. Nézzük is meg hogy is írjuk meg a függvényünk:     íííííí
+Következő feladatunk egy egészen egyszerű statisztikai kérdés lesz. Ha szeretnénk, megírhatjuk ezt a feladatot a következő sorokban is, de én egy gyors függvény felvázolása mellett döntöttem, hiszen arra példát még nem is láttunk. Ugyebár a függvényünkben gyakorlatilag egyetlen lokális változóra lesz szükségünk, ami a helyes válaszok mennyiségét tartja majd nekünk számon, hiszen a paraméterként megkapott versenyzők megadják az összes versenyzőnek a számát. Nézzük is meg hogy is írjuk meg a függvényünk:
 
 ```python
 # Függvény az 5. feladathoz
@@ -199,7 +197,7 @@ print("A feladatra {} fő, a versenyzők {:.2f}%-a adott helyes választ.".
 
 # round függvénnyel létrehozott megoldás
 print("A feladatra {} fő, a versenyzők {}%-a adott helyes választ.".
-      format(helyes_valaszok_szama, 
+      format(helyes_valaszok_szama,
              round((helyes_valaszok_szama/len(adat))*100)
             ))
 ```
@@ -208,8 +206,28 @@ print("A feladatra {} fő, a versenyzők {}%-a adott helyes választ.".
 
 > A verseny feladatai nem egyenlő nehézségűek: az 1-5. feladat 3 pontot, a 6-10. feladat 4 pontot, a 11-13. feladat 5 pontot, míg a 14. feladat 6 pontot ér. Határozza meg az egyes versenyzők pontszámát, és a listát írassa ki a pontok.txt nevű állományba! Az állomány minden sora egy versenyző kódját, majd szóközzel elválasztva az általa elért pontszámot tartalmazza!
 
-```python
+Nos, ha már úgy belejöttünk, írjunk erre a problémának pontszámoló részére is egy függvényt, hisz teljesen profik vagyunk már bennük. Ahogy töpprengtem, hogy vajon miként lehet elegánsan megoldani ezt a problémát, rátaláltam arra az igazságra, hogy néha vissza vissza kell térni az alapokhoz, ami ebben az esetben nem más, mint pár darab if-else statement. Ha nagyon keresünk más megoldást, csinálhatjuk azt is, hogy generálunk egy 14 elemű listát és azon is szimultán végig megyünk, vagy amennyiben nagyon Janinak érezzük magunkat, készíthetünk egy asszociatív tömböt amiben a kulcsok a pontok és az értékek pedig függvényreferenciák amiket ha meghívunk igaz-hamisat adnak vissza, meg millió más dolgot, de minek túlkomlikálni, amit meg lehet csinálni egyszerűen és az egyetlen fontos dolgunk, hogy az egész működjön, nem az, hogy milyen gyorsan vagy szépen (és ebben az esetben semelyiket sem adjuk fel). Nyomjuk is tovább, íme a függvény:
 
+```python
+# Függvény az 6. feladathoz, a pontszámoláshoz
+def pontszam(helyes_megoldas, versenyzo_megoldas):
+    pontszam = 0
+    for i in range(1, 15):
+        # Ha nem egyezik meg a versenyzo valasza es a megoldokulcs
+        # Tovabb megyunk a kovetkező válaszra
+        if helyes_megoldas[i-1] != versenyzo_megoldas[i-1]:
+            continue
+
+        if 1 <= i <= 5:
+            pontszam += 3
+        elif 6 <= i <= 10:
+            pontszam += 4
+        elif 11 <= i <= 13:
+            pontszam += 5
+        elif i == 14:
+            pontszam += 6
+
+    return pontszam
 ```
 
 ## 7. feladat

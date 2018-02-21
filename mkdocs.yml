@@ -11,11 +11,11 @@ extra:
     language: 'hu'
   social:
     - type: 'github'
-      link: 'https://github.com/squidfunk'
+      link: 'https://github.com/barcai'
     - type: 'twitter'
-      link: 'https://twitter.com/squidfunk'
+      link: 'https://twitter.com/ZsomborUdvardy'
     - type: 'linkedin'
-      link: 'https://linkedin.com/in/squidfunk'
+      link: 'https://www.linkedin.com/in/zsombor-udvardy/'
 
 # Google Analytics
 google_analytics:
@@ -27,7 +27,7 @@ pages:
 - Kezdőlap: 
   - Indulás: index.md
 - Rólam:
-  - _: about.md
+  - Udvardy Zsombor: about.md
 - Érettségi megoldások:
   - 2017 május: 2017_majus.md
   - 2016 május: 2016_majus.md
