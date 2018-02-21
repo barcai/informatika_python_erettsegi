@@ -272,8 +272,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../about/" title="_" class="md-nav__link">
-      _
+    <a href="../about/" title="Udvardy Zsombor" class="md-nav__link">
+      Udvardy Zsombor
     </a>
   </li>
 
@@ -661,7 +661,7 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
 <blockquote>
 <p>Kérje be egy feladat sorszámát, majd határozza meg, hogy hány versenyző adott a feladatra helyes megoldást, és ez a versenyzők hány százaléka! A százalékos eredményt a mintának megfelelően, két tizedesjeggyel írassa ki!</p>
 </blockquote>
-<p>Következő feladatunk egy egészen egyszerű statisztikai kérdés lesz. Ha szeretnénk, megírhatjuk ezt a feladatot a következő sorokban is, de én egy gyors függvény felvázolása mellett döntöttem, hiszen arra példát még nem is láttunk. Ugyebár a függvényünkben gyakorlatilag egyetlen lokális változóra lesz szükségünk, ami a helyes válaszok mennyiségét tartja majd nekünk számon, hiszen a paraméterként megkapott versenyzők megadják az összes versenyzőnek a számát. Nézzük is meg hogy is írjuk meg a függvényünk:     íííííí</p>
+<p>Következő feladatunk egy egészen egyszerű statisztikai kérdés lesz. Ha szeretnénk, megírhatjuk ezt a feladatot a következő sorokban is, de én egy gyors függvény felvázolása mellett döntöttem, hiszen arra példát még nem is láttunk. Ugyebár a függvényünkben gyakorlatilag egyetlen lokális változóra lesz szükségünk, ami a helyes válaszok mennyiségét tartja majd nekünk számon, hiszen a paraméterként megkapott versenyzők megadják az összes versenyzőnek a számát. Nézzük is meg hogy is írjuk meg a függvényünk:</p>
 <div class="codehilite"><pre><span></span><span class="c1"># Függvény az 5. feladathoz</span>
 <span class="k">def</span> <span class="nf">helyes_valaszok_osszesen</span><span class="p">(</span><span class="n">feladat_szama</span><span class="p">,</span> <span class="n">megoldas</span><span class="p">,</span> <span class="n">versenyzok</span><span class="p">):</span>
     <span class="n">helyes_valaszok_szama</span> <span class="o">=</span> <span class="mi">0</span>
@@ -689,7 +689,7 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
 
 <span class="c1"># round függvénnyel létrehozott megoldás</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;A feladatra {} fő, a versenyzők {}%-a adott helyes választ.&quot;</span><span class="o">.</span>
-      <span class="n">format</span><span class="p">(</span><span class="n">helyes_valaszok_szama</span><span class="p">,</span> 
+      <span class="n">format</span><span class="p">(</span><span class="n">helyes_valaszok_szama</span><span class="p">,</span>
              <span class="nb">round</span><span class="p">((</span><span class="n">helyes_valaszok_szama</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">adat</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
             <span class="p">))</span>
 </pre></div>
@@ -699,7 +699,26 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
 <blockquote>
 <p>A verseny feladatai nem egyenlő nehézségűek: az 1-5. feladat 3 pontot, a 6-10. feladat 4 pontot, a 11-13. feladat 5 pontot, míg a 14. feladat 6 pontot ér. Határozza meg az egyes versenyzők pontszámát, és a listát írassa ki a pontok.txt nevű állományba! Az állomány minden sora egy versenyző kódját, majd szóközzel elválasztva az általa elért pontszámot tartalmazza!</p>
 </blockquote>
-<div class="codehilite"><pre><span></span>
+<p>Nos, ha már úgy belejöttünk, írjunk erre a problémának pontszámoló részére is egy függvényt, hisz teljesen profik vagyunk már bennük. Ahogy töpprengtem, hogy vajon miként lehet elegánsan megoldani ezt a problémát, rátaláltam arra az igazságra, hogy néha vissza vissza kell térni az alapokhoz, ami ebben az esetben nem más, mint pár darab if-else statement. Ha nagyon keresünk más megoldást, csinálhatjuk azt is, hogy generálunk egy 14 elemű listát és azon is szimultán végig megyünk, vagy amennyiben nagyon Janinak érezzük magunkat, készíthetünk egy asszociatív tömböt amiben a kulcsok a pontok és az értékek pedig függvényreferenciák amiket ha meghívunk igaz-hamisat adnak vissza, meg millió más dolgot, de minek túlkomlikálni, amit meg lehet csinálni egyszerűen és az egyetlen fontos dolgunk, hogy az egész működjön, nem az, hogy milyen gyorsan vagy szépen (és ebben az esetben semelyiket sem adjuk fel). Nyomjuk is tovább, íme a függvény:</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Függvény az 6. feladathoz, a pontszámoláshoz</span>
+<span class="k">def</span> <span class="nf">pontszam</span><span class="p">(</span><span class="n">helyes_megoldas</span><span class="p">,</span> <span class="n">versenyzo_megoldas</span><span class="p">):</span>
+    <span class="n">pontszam</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">):</span>
+        <span class="c1"># Ha nem egyezik meg a versenyzo valasza es a megoldokulcs</span>
+        <span class="c1"># Tovabb megyunk a kovetkező válaszra</span>
+        <span class="k">if</span> <span class="n">helyes_megoldas</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">versenyzo_megoldas</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">pontszam</span> <span class="o">+=</span> <span class="mi">3</span>
+        <span class="k">elif</span> <span class="mi">6</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">pontszam</span> <span class="o">+=</span> <span class="mi">4</span>
+        <span class="k">elif</span> <span class="mi">11</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">13</span><span class="p">:</span>
+            <span class="n">pontszam</span> <span class="o">+=</span> <span class="mi">5</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">14</span><span class="p">:</span>
+            <span class="n">pontszam</span> <span class="o">+=</span> <span class="mi">6</span>
+
+    <span class="k">return</span> <span class="n">pontszam</span>
 </pre></div>
 
 
@@ -727,7 +746,7 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../about/" title="_" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../about/" title="Udvardy Zsombor" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -736,7 +755,7 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                _
+                Udvardy Zsombor
               </span>
             </div>
           </a>
@@ -775,11 +794,11 @@ Ezek után pedig átmegyünk minden egyes soron és elmentjük a versenyzők kö
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-      <a href="https://github.com/squidfunk" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/barcai" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://twitter.com/squidfunk" class="md-footer-social__link fa fa-twitter"></a>
+      <a href="https://twitter.com/ZsomborUdvardy" class="md-footer-social__link fa fa-twitter"></a>
     
-      <a href="https://linkedin.com/in/squidfunk" class="md-footer-social__link fa fa-linkedin"></a>
+      <a href="https://www.linkedin.com/in/zsombor-udvardy/" class="md-footer-social__link fa fa-linkedin"></a>
     
   </div>
 
